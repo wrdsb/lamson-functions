@@ -3,8 +3,9 @@ module.exports = function (context, req) {
 
     var parsed_post = req.body;
     parsed_post.post_id = parsed_post.ID;
-    parsed_post.ID = `${parsed_post.site_domain}-${parsed_post.site_slug}-${parsed_post.post_id}`;
-    parsed_post.ID = parsed_post.ID.replace(/\./g, '-');
+    parsed_post.id = `${parsed_post.site_domain}-${parsed_post.site_slug}-${parsed_post.post_id}`;
+    parsed_post.id = parsed_post.id.replace(/\./g, '-');
+    delete parsed_post.ID;
 
     context.bindings.postToStore = JSON.stringify(parsed_post);
 
