@@ -13,7 +13,7 @@
             "name": "postToStore",
             "type": "cosmosDB",
             "databaseName": "wrdsb-lamson",
-            "collectionName": "staff-wrdsb-ca",
+            "collectionName": "wp-posts",
             "createIfNotExists": true,
             "connectionStringSetting": "wrdsb-lamson_COSMOSDB",
             "direction": "out"
