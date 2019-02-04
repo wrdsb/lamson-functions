@@ -1,0 +1,27 @@
+{
+    "bindings": [
+        {
+            "name": "req",
+            "type": "httpTrigger",
+            "authLevel": "function",
+            "direction": "in",
+            "methods": [
+                "post"
+            ]
+        },
+        {
+            "name": "postToStore",
+            "type": "cosmosDB",
+            "databaseName": "lamson",
+            "collectionName": "wp-posts",
+            "connectionStringSetting": "wrdsb-lamson_COSMOSDB",
+            "direction": "out"
+          },
+        {
+            "name": "res",
+            "type": "http",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
+}
