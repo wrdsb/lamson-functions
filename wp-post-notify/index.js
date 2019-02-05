@@ -48,7 +48,7 @@ module.exports = function (context, req) {
             context.done(error);
 
         } else {
-            var notification_to_store = JSON.parse(JSON.stringify(notification));
+            var notification_to_store = notification;
             notification_to_store.lamson_id = id;
             notification_to_store.created_at = execution_timestamp;
 
