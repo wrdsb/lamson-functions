@@ -52,7 +52,7 @@ module.exports = function (context, req) {
             notification_to_store.lamson_id = id;
             notification_to_store.created_at = execution_timestamp;
 
-            notification_to_store.result = JSON.parse(result);
+            notification_to_store.result = result;
             notification_to_store.result.request.headers.Authorization = 'redacted';
             context.bindings.notificationToStore = JSON.stringify(notification_to_store);
 
