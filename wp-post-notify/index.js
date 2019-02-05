@@ -53,7 +53,7 @@ module.exports = function (context, req) {
             notification_to_store.created_at = execution_timestamp;
 
             notification_to_store.result = result;
-            notification_to_store.result.request.headers.Authorization = 'redacted';
+            notification_to_store.result[0].request.headers.Authorization = 'redacted';
             context.bindings.notificationToStore = JSON.stringify(notification_to_store);
 
             context.res = {
