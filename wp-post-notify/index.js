@@ -9,7 +9,7 @@ module.exports = function (context, req) {
     var site_slug = parsed_post.site_slug;
     var site_name = parsed_post.site_name;
     var id = parsed_post.id;
-    var post_title = parsed_post.site_name;
+    var post_title = parsed_post.post_title;
     var post_content = parsed_post.post_content;
     var post_guid = parsed_post.post_guid;
 
