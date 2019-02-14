@@ -31,7 +31,7 @@ module.exports = function (context, req) {
                 body: data
             }
             context.log(data);
-            context.bindings.postToStore = JSON.stringify(data);
+            context.bindings.postToStore = data;
             context.done(null, JSON.stringify(data));
         }
     });
