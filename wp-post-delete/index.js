@@ -6,7 +6,6 @@ module.exports = function (context, req) {
     var wp_service = req.body.wp_service;
     var wp_environment = req.body.wp_environment;
     var post_id = req.body.post_id;
-    var post = req.body.post;
     
     // get credentials from environment
     var api_key_name = `wrdsb_${wp_service}_${wp_environment}_key`;
@@ -17,7 +16,7 @@ module.exports = function (context, req) {
 
     wp.setHeaders( 'Authorization', `Basic ${api_key}` );
 
-    wp.posts().id(post_id).delete(post, function( error, data ) {
+    wp.posts().id(post_id).delete(function( error, data ) {
         if ( error ) {
             context.res = {
                 status: 500,
