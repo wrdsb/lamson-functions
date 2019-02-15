@@ -25,12 +25,30 @@ module.exports = function (context, req) {
             context.done(error);
             return;
         } else {
+            var posts = [];
+            var paging = {};
+
+            data.forEach(item => {
+                if (item.id) {
+                    posts.push(item);
+                }
+            });
+
+            if (data._paging) {
+                paging = data._paging;
+            }
+
+            var body = {
+                posts: posts,
+                paging: paging,
+            };
+
             context.res = {
                 status: 200,
-                body: data
+                body: body
             }
-            context.log(data);
-            context.done(null, data);
+            context.log(body);
+            context.done(null, body);
         }
     });
 };
