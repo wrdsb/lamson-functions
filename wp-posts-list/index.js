@@ -3,6 +3,7 @@ module.exports = function (context, req) {
 
     // get request params
     var wp_domain = req.body.wp_domain;
+    var wp_site = req.body.wp_site;
     var wp_service = req.body.wp_service;
     var wp_environment = req.body.wp_environment;
     
@@ -11,7 +12,13 @@ module.exports = function (context, req) {
     var api_key = process.env[api_key_name];
 
     var WPAPI = require( 'wpapi' );
-    var wp = new WPAPI({ endpoint: `https://${wp_domain}/wp-json` });
+    var wp;
+    
+    if (wp_site) {
+        wp = new WPAPI({ endpoint: `https://${wp_domain}/${wp_site}/wp-json` });
+    } else {
+        wp = new WPAPI({ endpoint: `https://${wp_domain}/wp-json` });
+    }
 
     wp.setHeaders( 'Authorization', `Basic ${api_key}` );
 
