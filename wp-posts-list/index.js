@@ -4,12 +4,21 @@ module.exports = function (context, req) {
     // get request params
     var wp_domain = req.body.wp_domain;
     var wp_site = req.body.wp_site;
+    var wp_paging_page = req.body.wp_paging_page;
     var wp_service = req.body.wp_service;
     var wp_environment = req.body.wp_environment;
     
     // get credentials from environment
     var api_key_name = `wrdsb_${wp_service}_${wp_environment}_key`;
     var api_key = process.env[api_key_name];
+
+    var paging_page;
+
+    if (wp_paging_page) {
+        paging_page = wp_paging_page;
+    } else {
+        paging_page = 1;
+    }
 
     var WPAPI = require( 'wpapi' );
     var wp;
@@ -22,7 +31,7 @@ module.exports = function (context, req) {
 
     wp.setHeaders( 'Authorization', `Basic ${api_key}` );
 
-    wp.posts().get(function( error, data ) {
+    wp.posts().page(paging_page).get(function( error, data ) {
         if ( error ) {
             context.res = {
                 status: 500,
