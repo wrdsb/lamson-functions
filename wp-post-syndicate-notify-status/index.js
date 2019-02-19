@@ -4,8 +4,10 @@ module.exports = function (context, req) {
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(process.env['SENDGRID_API_KEY']);
 
-    var syndication_items = req.body;
-    var post_title = "";
+    var syndication_items = req.body.syndications;
+    var post_title = req.body.post_title;
+    var author_email = req.body.post_author_email;
+
     var html = `
         <table style="width:100%">
             <tr>
@@ -15,17 +17,18 @@ module.exports = function (context, req) {
 
     syndication_items.forEach(item => {
         var row_status = (item.status == '200') ? 'Good' : '<strong>Error</strong>';
-        var row_detail = item.body.link;
+        var row_detail = (item.body.link) ? item.body.link : '<strong>Error</strong>';
         var row = `
             <tr>
                 <td>${row_status}</td> 
                 <td>${row_detail}</td>
             </tr>`;
 
-        html.concat(row);
+        html += row;
     });
 
-    html.concat('</table>');
+    html += '</table>';
+    html += author_email;
 
     var notification = {
         subject: `Syndication: ${post_title}`,
