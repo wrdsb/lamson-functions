@@ -28,14 +28,13 @@ module.exports = function (context, req) {
     });
 
     html += '</table>';
-    html += author_email;
 
     var notification = {
         subject: `Syndication: ${post_title}`,
-        to: 'james_schumann@wrdsb.ca',
+        to: author_email,
         from: {
             email: 'syndications@lamson.wrdsb.io',
-            name: 'Syndication Notifications'
+            name: 'Syndication Status Notifications'
         },
         html: html 
     };
