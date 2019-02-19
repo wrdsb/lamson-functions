@@ -181,6 +181,7 @@ module.exports = function (context, req) {
 
         var syndication = {
             "wp_domain": `${wp_install}.wrdsb.ca`,
+            "wp_site": wp_site_slug,
             "wp_service": wp_install,
             "wp_environment": "prod",
             "post": {
