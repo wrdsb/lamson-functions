@@ -39,7 +39,7 @@ module.exports = function (context, req) {
                 email: 'notifications@lamson.wrdsb.io',
                 name: 'Lamson Test Notifications'
             };
-            notifictaion.html = `${post_content} <p>Originally here: ${post_guid}</p>`
+            notification.html = `${post_content} <p>Originally here: ${post_guid}</p>`
             break;
     }
 
