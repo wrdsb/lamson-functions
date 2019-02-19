@@ -7,7 +7,7 @@ module.exports = function (context, req) {
     var parsed_post = req.body;
 
     if (parsed_post.post_type != 'post') {
-        context.done(null, "Not a post.")
+        context.done(null, "Not a post.");
     }
 
     var site_domain = parsed_post.site_domain;
