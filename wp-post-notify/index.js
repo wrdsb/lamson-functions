@@ -30,7 +30,7 @@ module.exports = function (context, req) {
                 email: `intranet-${site_slug}@lamson.wrdsb.ca`,
                 name: site_name
             };
-            notifictaion.html = `${post_content} <p>Originally published on the Staff Intranet here: ${post_guid}</p>`
+            notification.html = `${post_content} <p>Originally published on the Staff Intranet here: ${post_guid}</p>`
             break;
     
         default:
