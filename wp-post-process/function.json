@@ -1,0 +1,33 @@
+{
+    "bindings": [
+        {
+            "name": "hookWpPostPublish",
+            "type": "queueTrigger",
+            "queueName": "hook-wp-post-publish",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "in"
+        },
+        {
+            "name": "lamsonWpPostStore",
+            "type": "queue",
+            "queueName": "lamson-wp-post-store",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "out"
+        },
+        {
+            "name": "lamsonWpPostNotify",
+            "type": "queue",
+            "queueName": "lamson-wp-post-notify",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "out"
+        },
+        {
+            "name": "lamsonWpPostSyndicate",
+            "type": "queue",
+            "queueName": "lamson-wp-post-syndicate",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
+}
