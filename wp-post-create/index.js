@@ -32,7 +32,6 @@ module.exports = function (context, req) {
                 status: 200,
                 body: data
             }
-            context.log(data);
             context.done(null, data);
         }
     });
