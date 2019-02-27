@@ -27,7 +27,7 @@ module.exports = function (context, req) {
         case 'staff.wrdsb.ca':
             notification.to = `intranet-${site_slug}@wrdsb.ca`;
             notification.from = {
-                email: `intranet-${site_slug}@lamson.wrdsb.ca`,
+                email: `intranet-${site_slug}@lamson.wrdsb.io`,
                 name: site_name
             };
             notification.html = `${post_content} <p>Originally published on the Staff Intranet here: ${post_guid}</p>`
