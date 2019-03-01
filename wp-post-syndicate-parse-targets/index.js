@@ -188,7 +188,7 @@ module.exports = function (context, req) {
                 "title": post.post_title,
                 "content": post.post_content,
                 "status": "publish",
-                "author_email" : post.author_email
+                "author_email": post.post_author_email
             }
         };
         response.push(syndication);
