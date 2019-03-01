@@ -16,8 +16,8 @@ module.exports = function (context, req) {
             </tr>`;
 
     syndication_items.forEach(item => {
-        var row_status = (item.status == '200') ? 'Good' : '<strong>Error</strong>';
-        var row_detail = (item.body.link) ? item.body.link : '<strong>Error</strong>';
+        var row_status = (item.status.startsWith('2')) ? 'Good' : '<strong>Error</strong>';
+        var row_detail = (item.body.data.link) ? item.body.data.link : '<strong>Error</strong>';
         var row = `
             <tr>
                 <td>${row_status}</td> 
