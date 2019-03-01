@@ -44,6 +44,7 @@ module.exports = function (context, req) {
         context.res = {
             status: response.status,
             body: {
+                status: response.status,
                 statusText: response.statusText,
                 data: created_post
             }
