@@ -1,0 +1,20 @@
+{
+    "bindings": [
+        {
+            "name": "lamsonWpPostStore",
+            "type": "queueTrigger",
+            "queueName": "lamson-wp-post-store",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "in"
+        },
+        {
+            "name": "postToStore",
+            "type": "cosmosDB",
+            "databaseName": "lamson",
+            "collectionName": "wp-posts",
+            "connectionStringSetting": "wrdsb-lamson_COSMOSDB",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
+}
