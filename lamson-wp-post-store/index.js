@@ -6,7 +6,7 @@ module.exports = function (context, message) {
     var site_url = parsed_post.site_url;         // "staff.wrdsb.ca/its-team"
     var visible_to = [];
 
-    switch (parsed_post.site_privacy) {
+    switch (`${parsed_post.site_privacy}`) {
         case '-1':
             visible_to.push(`${site_domain}:members`);
             visible_to.push(`${site_url}:members`);
