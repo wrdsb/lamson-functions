@@ -1,9 +1,9 @@
 module.exports = function (context, message) {
     var execution_timestamp = (new Date()).toJSON();  // format: 2012-04-23T18:25:43.511Z
 
-    var parsed_post = message.MessageText;
+    var parsed_post = message;
 
-    context.bindings.postToStore = JSON.stringify(parsed_post);
+    context.bindings.postToStore = parsed_post;
 
     let event = {
         id: 'lamson-functions-' + context.executionContext.functionName +'-'+ context.executionContext.invocationId,
