@@ -38,15 +38,14 @@ module.exports = function (context, req) {
 
         context.log(`${response.status}: ${response.statusText}`);
 
-        // cut off everything up to first {, because WPDEBUG prepends errors as HTML, buggering up the JSON. *sigh*
-        created_post = JSON.parse(response.data.substring(response.data.indexOf('{')));
-
+        // if we've got valid JSON, great, return it
+        // otherwise, return the parse error from trying to parse the JSON
         context.res = {
             status: response.status,
             body: {
                 status: response.status,
                 statusText: response.statusText,
-                data: created_post
+                data: response.data
             }
         };
     })
@@ -89,4 +88,13 @@ module.exports = function (context, req) {
     .then(function () {
         context.done();
     });
+
+    function handleResponseData(data) {
+        try {
+            JSON.stringify(data);
+        } catch (error) {
+            return `${error}: ${data}`;
+        }
+        return data;
+    }
 };

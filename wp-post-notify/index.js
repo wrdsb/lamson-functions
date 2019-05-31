@@ -25,6 +25,18 @@ module.exports = function (context, req) {
     var post_title = parsed_post.post_title;
     var post_content = parsed_post.post_content;
     var post_guid = parsed_post.post_guid;
+    var send_notification = parsed_post.lamson_send_notification;
+
+    if (!send_notification === "yes") {
+        context.res = {
+            status: 200,
+            body: "Do not send."
+        };
+
+        context.log("Do not send.");
+        context.done(null, "Do not send.");
+        return;
+    }
 
     var notification = {
         subject: post_title
