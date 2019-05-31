@@ -5,10 +5,22 @@ module.exports = function (context, message) {
 
     context.bindings.postToStore = JSON.stringify(parsed_post);
 
-    context.res = {
-        status: 200,
-        body: parsed_post
+    let event = {
+        id: 'lamson-functions-' + context.executionContext.functionName +'-'+ context.executionContext.invocationId,
+        eventType: 'Lamson.WP.Post.Store',
+        eventTime: execution_timestamp,
+        data: {
+            event_type: 'function_invocation',
+            app: 'wrdsb-lamson',
+            function_name: context.executionContext.functionName,
+            invocation_id: context.executionContext.invocationId,
+            data: parsed_post,
+            timestamp: execution_timestamp
+        },
+        dataVersion: '1'
     };
+
+    context.bindings.callbackMessage = JSON.stringify(event);
 
     context.log(parsed_post);
     context.done(null, parsed_post);

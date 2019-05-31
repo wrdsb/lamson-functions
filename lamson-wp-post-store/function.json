@@ -14,6 +14,13 @@
             "collectionName": "wp-posts",
             "connectionStringSetting": "wrdsb-lamson_COSMOSDB",
             "direction": "out"
+        },
+        {
+            "name": "callbackMessage",
+            "type": "queue",
+            "queueName": "callbacks",
+            "connection":"wrdsblamson_STORAGE",
+            "direction": "out"
         }
     ],
     "disabled": false
