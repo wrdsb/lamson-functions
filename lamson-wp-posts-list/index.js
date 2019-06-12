@@ -34,7 +34,19 @@ module.exports = function (context, message) {
         context.log(`${response.status}: ${response.statusText}`);
         context.log(response.data);
 
-        //context.bindings.lamsonWpPostStore = response.data;
+        var posts = [];
+        response.data.forEach(post_id => {
+            var post = {
+                "wp_service": wp_service,
+                "wp_environment": wp_environment,
+                "wp_domain": wp_domain,
+                "wp_site": wp_site,
+                "post": post_id
+            };
+            posts.push(JSON.stringify(post));
+        });
+
+        context.bindings.lamsonWpPostFetch = posts;
 
         //context.res = {
             //status: response.status,
