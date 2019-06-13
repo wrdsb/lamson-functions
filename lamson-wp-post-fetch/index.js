@@ -36,7 +36,7 @@ module.exports = function (context, message) {
         context.log(`${response.status}: ${response.statusText}`);
         context.log(response.data);
 
-        context.bindings.lamsonWpPostStore = response.data;
+        context.bindings.lamsonWpPostStore = JSON.stringify(response.data);
 
         //context.res = {
             //status: response.status,
