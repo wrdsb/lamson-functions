@@ -1,9 +1,9 @@
 {
     "bindings": [
         {
-            "name": "hookWpPostPublish",
+            "name": "queueMessage",
             "type": "queueTrigger",
-            "queueName": "hook-wp-post-publish",
+            "queueName": "wp-post-process",
             "connection":"wrdsblamson_STORAGE",
             "direction": "in"
         },
