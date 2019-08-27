@@ -1,13 +1,40 @@
 module.exports = function (context, req) {
     var execution_timestamp = (new Date()).toJSON();  // format: 2012-04-23T18:25:43.511Z
     
-    var wp_service = "staff";
-    var wp_environment = "prod";
-    var wp_domain = "staff.wrdsb.ca";
-
     var messages = [];
 
-    var sites = [
+    var www_wp_service = "www";
+    var www_wp_environment = "prod";
+    var www_wp_domain = "www.wrdsb.ca";
+    var www_sites = [
+        'empty',
+        'planning',
+        'pic',
+        'facilities',
+        'kindergarten',
+        'beforeafter',
+        'careers',
+        'esu',
+        'wefi',
+        'french',
+        'board-meetings',
+        'learning-services',
+        'labourupdate',
+        'bipsa',
+        'safeschools',
+        'innovative-change',
+        'labour',
+        'catc',
+        'continuing-education',
+        'alternative-education',
+        'ctcc',
+        'register'
+    ];
+
+    var staff_wp_service = "staff";
+    var staff_wp_environment = "prod";
+    var staff_wp_domain = "staff.wrdsb.ca";
+    var staff_sites = [
         'summer-contact',
         'eguide',
         'communications',
@@ -209,11 +236,21 @@ module.exports = function (context, req) {
         'technological-education',
     ];
 
-    sites.forEach(wp_site => {
+    www_sites.forEach(wp_site => {
         var message = {
-            wp_service: wp_service,
-            wp_environment: wp_environment,
-            wp_domain: wp_domain,
+            wp_service: www_wp_service,
+            wp_environment: www_wp_environment,
+            wp_domain: www_wp_domain,
+            wp_site: wp_site
+        };
+        messages.push(JSON.stringify(message));
+    });
+
+    staff_sites.forEach(wp_site => {
+        var message = {
+            wp_service: staff_wp_service,
+            wp_environment: staff_wp_environment,
+            wp_domain: staff_wp_domain,
             wp_site: wp_site
         };
         messages.push(JSON.stringify(message));
