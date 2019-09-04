@@ -15,7 +15,7 @@ module.exports = function (context, message) {
             app: 'wrdsb-lamson',
             function_name: context.executionContext.functionName,
             invocation_id: context.executionContext.invocationId,
-            data: parsed_post,
+            data: message,
             timestamp: execution_timestamp
         },
         dataVersion: '1'
@@ -23,6 +23,6 @@ module.exports = function (context, message) {
 
     context.bindings.callbackMessage = JSON.stringify(event);
 
-    context.log(parsed_post);
-    context.done(null, parsed_post);
+    context.log(message);
+    context.done(null, message);
 };
