@@ -1,7 +1,8 @@
 module.exports = function (context, message) {
     var execution_timestamp = (new Date()).toJSON();  // format: 2012-04-23T18:25:43.511Z
 
-    var parsed_post = message;
+    //var parsed_post = message;
+    var parsed_post = context.bindings.postObject;
 
     context.bindings.postToStore = parsed_post;
 

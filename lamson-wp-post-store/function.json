@@ -8,6 +8,13 @@
             "direction": "in"
         },
         {
+            "name": "postObject",
+            "type": "blob",
+            "path": "wp-posts/{queueTrigger}",
+            "connection": "wrdsblamson_STORAGE",
+            "direction": "in"
+        },
+        {
             "name": "postToStore",
             "type": "cosmosDB",
             "databaseName": "lamson",
