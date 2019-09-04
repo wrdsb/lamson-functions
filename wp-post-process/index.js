@@ -4,7 +4,7 @@ module.exports = function (context, message) {
     let post = context.bindings.postObject;
 
     context.log('Queuing storage.');
-    context.bindings.lamsonWpPostStore = post;
+    context.bindings.lamsonWpPostStore = message;
 
     if (post.post_status === 'publish') {
         if (post.lamson_send_notification === 'yes') {
