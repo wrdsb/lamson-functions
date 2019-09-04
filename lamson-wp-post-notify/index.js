@@ -1,10 +1,10 @@
-module.exports = function (context, req) {
+module.exports = function (context, message) {
     var execution_timestamp = (new Date()).toJSON();  // format: 2012-04-23T18:25:43.511Z
 
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey(process.env['SENDGRID_API_KEY']);
 
-    var parsed_post = req.body;
+    let parsed_post = context.bindings.postObject;
 
     if (parsed_post.post_type != 'post') {
         context.res = {

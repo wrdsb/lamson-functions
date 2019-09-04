@@ -1,13 +1,18 @@
 {
     "bindings": [
         {
-            "name": "req",
-            "type": "httpTrigger",
-            "authLevel": "function",
-            "direction": "in",
-            "methods": [
-                "post"
-            ]
+            "name": "queueMessage",
+            "type": "queueTrigger",
+            "queueName": "lamson-wp-post-notify",
+            "connection": "wrdsblamson_STORAGE",
+            "direction": "in"
+        },
+        {
+            "name": "postObject",
+            "type": "blob",
+            "path": "wp-posts/{queueTrigger}",
+            "connection": "wrdsblamson_STORAGE",
+            "direction": "in"
         },
         {
             "name": "notificationToStore",
