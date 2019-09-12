@@ -14,7 +14,7 @@ module.exports = function (context, message) {
 
         if (post.lamson_do_syndication === 'yes') {
             context.log('Queuing syndication.');
-            context.bindings.lamsonWpPostSyndicate = post;
+            context.bindings.lamsonWpPostSyndicate = message;
         }
     }
 
