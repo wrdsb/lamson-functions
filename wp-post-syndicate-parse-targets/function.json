@@ -10,6 +10,13 @@
             ]
         },
         {
+            "name": "postObject",
+            "type": "blob",
+            "path": "wp-posts/{httpTrigger}",
+            "connection": "wrdsblamson_STORAGE",
+            "direction": "in"
+        },
+        {
             "name": "$return",
             "type": "http",
             "direction": "out"

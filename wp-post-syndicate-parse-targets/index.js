@@ -1,7 +1,8 @@
 module.exports = function (context, req) {
     var execution_timestamp = (new Date()).toJSON();  // format: 2012-04-23T18:25:43.511Z
 
-    var post = req.body;
+    //var post = req.body;
+    var post = postObject;
     var post_syndication_targets = post.lamson_syndication_targets;
 
     var syndication_targets = new Set();
