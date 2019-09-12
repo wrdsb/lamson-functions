@@ -28,11 +28,6 @@ module.exports = function (context, message) {
     var send_notification = parsed_post.lamson_send_notification;
 
     if (!send_notification === "yes") {
-        context.res = {
-            status: 200,
-            body: "Do not send."
-        };
-
         context.log("Do not send.");
         context.done(null, "Do not send.");
         return;
@@ -64,13 +59,25 @@ module.exports = function (context, message) {
 
     sgMail.send(notification, (error, result) => {
         if (error) {
-            context.res = {
-                status: 500,
-                body: error
+            let event = {
+                id: 'lamson-functions-' + context.executionContext.functionName +'-'+ context.executionContext.invocationId,
+                eventType: 'Lamson.WP.Post.Notify.Error',
+                eventTime: execution_timestamp,
+                data: {
+                    event_type: 'function_invocation',
+                    app: 'wrdsb-lamson',
+                    function_name: context.executionContext.functionName,
+                    invocation_id: context.executionContext.invocationId,
+                    data: error,
+                    timestamp: execution_timestamp
+                },
+                dataVersion: '1'
             };
-
+        
+            context.bindings.callbackMessage = JSON.stringify(event);
+       
             context.log(error);
-            context.done(error);
+            context.done(null, error);
 
         } else {
             var notification_to_store = notification;
@@ -81,11 +88,23 @@ module.exports = function (context, message) {
             notification_to_store.result[0].request.headers.Authorization = 'redacted';
             context.bindings.notificationToStore = JSON.stringify(notification_to_store);
 
-            context.res = {
-                status: 200,
-                body: notification_to_store
+            let event = {
+                id: 'lamson-functions-' + context.executionContext.functionName +'-'+ context.executionContext.invocationId,
+                eventType: 'Lamson.WP.Post.Notify',
+                eventTime: execution_timestamp,
+                data: {
+                    event_type: 'function_invocation',
+                    app: 'wrdsb-lamson',
+                    function_name: context.executionContext.functionName,
+                    invocation_id: context.executionContext.invocationId,
+                    data: notification_to_store,
+                    timestamp: execution_timestamp
+                },
+                dataVersion: '1'
             };
-
+        
+            context.bindings.callbackMessage = JSON.stringify(event);
+       
             context.log(notification_to_store);
             context.done(null, notification_to_store);
         }
