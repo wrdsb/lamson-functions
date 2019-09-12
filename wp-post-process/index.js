@@ -9,7 +9,7 @@ module.exports = function (context, message) {
     if (post.post_status === 'publish') {
         if (post.lamson_send_notification === 'yes') {
             context.log('Queuing notifications.');
-            context.bindings.lamsonWpPostNotify = post;
+            context.bindings.lamsonWpPostNotify = message;
         }
 
         if (post.lamson_do_syndication === 'yes') {
