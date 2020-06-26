@@ -1,2 +1,2 @@
-# Lamson - Functions
-Azure Functions app for Lamson, our content routing system.
+# Archived.
+Merged into [COSMOS](https://github.com/wrdsb/cosmos), June 26, 2020.
